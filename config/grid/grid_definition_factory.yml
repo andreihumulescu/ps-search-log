@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: true
+
+  prestashop.module.search_log.grid.definition.factory.search_log:
+    class: PrestaShop\Module\SearchLog\Grid\Definition\Factory\SearchLogDefinitionFactory
+    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+    arguments:
+      - '@=service("prestashop.adapter.legacy.context").getContext().language.date_format_full'
+    public: true

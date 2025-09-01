@@ -1,0 +1,39 @@
+search_log_index:
+  path: /searchlog
+  methods: [GET]
+  defaults:
+    _controller: PrestaShop\Module\SearchLog\Controller\Admin\SearchLogController::indexAction
+    _legacy_controller: AdminSearchLogList
+    _legacy_link: AdminSearchLogList
+
+search_log_filter:
+  path: /searchlog
+  methods: [POST]
+  defaults:
+    _controller: PrestaShopBundle\Controller\Admin\CommonController::searchGridAction
+    gridDefinitionFactoryServiceId: prestashop.module.search_log.grid.definition.factory.search_log
+    _legacy_controller: AdminSearchLogList
+    _legacy_link: AdminSearchLogList:submitFilterSearchLog
+    redirectRoute: search_log_index
+
+search_log_delete:
+  path: /searchlog/{searchLogId}/delete
+  methods: [POST]
+  defaults:
+    _controller: PrestaShop\Module\SearchLog\Controller\Admin\SearchLogController::deleteAction
+    _legacy_controller: AdminSearchLogList
+    _legacy_link: AdminSearchLogList:deletesearch_log
+    legacy_parameters:
+      id_search_log: searchLogId
+  requirements:
+    searchLogId: \d+
+
+search_log_bulk_delete:
+  path: /searchlog/bulk-delete
+  methods: [POST]
+  defaults:
+    _controller: PrestaShop\Module\SearchLog\Controller\Admin\SearchLogController::bulkDeleteAction
+    _legacy_controller: AdminSearchLogList
+    _legacy_link: AdminSearchLogList:submitBulkdeletesearch_log
+    legacy_parameters:
+      search_logBox: search_log_search_log_bulk

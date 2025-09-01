@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    public: true
+
+  prestashop.module.search_log.grid.factory.search_log:
+    class: PrestaShop\PrestaShop\Core\Grid\GridFactory
+    arguments:
+      - '@prestashop.module.search_log.grid.definition.factory.search_log'
+      - '@prestashop.module.search_log.grid.data.factory.search_log'
+      - '@prestashop.core.grid.filter.form_factory'
+      - '@prestashop.core.hook.dispatcher'

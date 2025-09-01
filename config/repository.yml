@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: true
+
+  prestashop.module.search_log.repository:
+    class: PrestaShop\Module\SearchLog\Repository\SearchLogRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\SearchLog\Entity\SearchLog

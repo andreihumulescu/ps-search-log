@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    public: true
+
+  prestashop.module.search_log.command_handler.delete_search_log:
+    class: PrestaShop\Module\SearchLog\Domain\SearchLog\CommandHandler\DeleteSearchLogHandler
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@prestashop.module.search_log.repository'
+    tags:
+      - name: tactician.handler
+        command: PrestaShop\Module\SearchLog\Domain\SearchLog\Command\DeleteSearchLogCommand
+
+  prestashop.module.search_log.command_handler.bulk_delete_search_log:
+    class: PrestaShop\Module\SearchLog\Domain\SearchLog\CommandHandler\BulkDeleteSearchLogHandler
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+    tags:
+      - name: tactician.handler
+        command: PrestaShop\Module\SearchLog\Domain\SearchLog\Command\BulkDeleteSearchLogCommand

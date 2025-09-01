@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    public: true
+
+  prestashop.module.search_log.grid.query_builder.search_log:
+    class: PrestaShop\Module\SearchLog\Grid\Query\SearchLogQueryBuilder
+    arguments:
+      - '@prestashop.core.query.doctrine_search_criteria_applicator'
+      - "@=service('prestashop.adapter.legacy.context').getContext().shop.id"
+    parent: 'prestashop.core.grid.abstract_query_builder'
+    public: true

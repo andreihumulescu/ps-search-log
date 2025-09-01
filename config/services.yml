@@ -1,0 +1,5 @@
+imports:
+  - { resource: 'command.yml' }
+  - { resource: 'controller.yml' }
+  - { resource: 'grid/*.yml' }
+  - { resource: 'repository.yml' }
